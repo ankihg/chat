@@ -2,9 +2,9 @@ const config = require('./config');
 const app = require('express')();
 
 app.get('/', (req, res) => {
-  res.send('<h1>plz respond</h1>');
+  res.sendFile(__dirname + '/src/index.html');
 })
 
 app.listen(config.PORT, () => {
-  console.log(`server spearking on port ${config.PORT}`);
+  console.log(`server speaking on port ${config.PORT}`);
 })
