@@ -8,7 +8,19 @@ app.get('/', (req, res) => {
 })
 
 io.on('connection', (socket) => {
-  console.log('welcome user');
+  console.log('welcome, user');
+
+  socket.on('disconnect', () => {
+    console.log('goodbye,  user');
+  });
+
+  socket.on('msg', (msg) => {
+    console.log(`msg received: ${msg}`);
+    io.emit('msg', msg);
+  });
+
+
+
 });
 
 http.listen(config.PORT, () => {
